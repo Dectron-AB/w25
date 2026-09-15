@@ -62,6 +62,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "embassy-futures"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "dc2d050bdc5c21e0862a89256ed8029ae6c290a93aecefc73084b3002cdebb01"
+
+[[package]]
 name = "embedded-hal"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -189,6 +195,7 @@ version = "0.7.2"
 dependencies = [
  "defmt",
  "derive_more",
+ "embassy-futures",
  "embedded-hal",
  "embedded-hal-async",
  "embedded-storage",

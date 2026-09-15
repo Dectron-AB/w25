@@ -1,5 +1,6 @@
 use super::*;
 use core::fmt::Debug;
+use embassy_futures::yield_now;
 use embedded_hal_async::spi::{Operation, SpiDevice};
 use embedded_storage_async::nor_flash::{MultiwriteNorFlash, NorFlash, ReadNorFlash};
 
@@ -200,7 +201,11 @@ where
             .await
             .map_err(Error::SpiError)?;
 
-        while self.busy().await? {}
+        while self.busy().await? {
+            // Avoid starving the executor when the SPI is
+            // faste enough for the busy check to not yield
+            yield_now().await;
+        }
 
         Ok(())
     }
@@ -258,7 +263,11 @@ where
             .await
             .map_err(Error::SpiError)?;
 
-        while self.busy().await? {}
+        while self.busy().await? {
+            // Avoid starving the executor when the SPI is
+            // faste enough for the busy check to not yield
+            yield_now().await;
+        }
 
         Ok(())
     }
@@ -281,7 +290,11 @@ where
             .await
             .map_err(Error::SpiError)?;
 
-        while self.busy().await? {}
+        while self.busy().await? {
+            // Avoid starving the executor when the SPI is
+            // faste enough for the busy check to not yield
+            yield_now().await;
+        }
 
         Ok(())
     }
@@ -304,7 +317,11 @@ where
             .await
             .map_err(Error::SpiError)?;
 
-        while self.busy().await? {}
+        while self.busy().await? {
+            // Avoid starving the executor when the SPI is
+            // faste enough for the busy check to not yield
+            yield_now().await;
+        }
 
         Ok(())
     }
@@ -319,7 +336,11 @@ where
             .await
             .map_err(Error::SpiError)?;
 
-        while self.busy().await? {}
+        while self.busy().await? {
+            // Avoid starving the executor when the SPI is
+            // faste enough for the busy check to not yield
+            yield_now().await;
+        }
 
         Ok(())
     }
