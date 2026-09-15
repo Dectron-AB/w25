@@ -203,7 +203,7 @@ where
 
         while self.busy().await? {
             // Avoid starving the executor when the SPI is
-            // faste enough for the busy check to not yield
+            // fast enough for the busy check to not yield
             yield_now().await;
         }
 
@@ -265,7 +265,7 @@ where
 
         while self.busy().await? {
             // Avoid starving the executor when the SPI is
-            // faste enough for the busy check to not yield
+            // fast enough for the busy check to not yield
             yield_now().await;
         }
 
@@ -292,7 +292,7 @@ where
 
         while self.busy().await? {
             // Avoid starving the executor when the SPI is
-            // faste enough for the busy check to not yield
+            // fast enough for the busy check to not yield
             yield_now().await;
         }
 
@@ -319,7 +319,7 @@ where
 
         while self.busy().await? {
             // Avoid starving the executor when the SPI is
-            // faste enough for the busy check to not yield
+            // fast enough for the busy check to not yield
             yield_now().await;
         }
 
@@ -338,7 +338,7 @@ where
 
         while self.busy().await? {
             // Avoid starving the executor when the SPI is
-            // faste enough for the busy check to not yield
+            // fast enough for the busy check to not yield
             yield_now().await;
         }
 
