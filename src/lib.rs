@@ -5,6 +5,7 @@
 
 use core::{fmt::Debug, marker::PhantomData};
 use derive_more::TryFrom;
+use embassy_futures::yield_now;
 use embedded_hal::digital::{OutputPin, PinState};
 use embedded_hal_async::spi::SpiDevice;
 use embedded_storage::nor_flash::{ErrorType, NorFlashError, NorFlashErrorKind};
@@ -209,6 +210,13 @@ where
 
         // Update the capacity.
         flash.capacity = major_device_id.capacity();
+
+        // Ensure the device is not busy from before a MCU restart
+        while flash.busy().await? {
+            // Avoid starving the executor when the SPI is
+            // fast enough for the busy check to not yield
+            yield_now().await;
+        }
 
         Ok(flash)
     }
