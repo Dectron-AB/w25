@@ -234,7 +234,7 @@ where
         let end_sector = end_address / Series::SECTOR_SIZE;
 
         for sector in start_sector..end_sector {
-            self.erase_sector(sector).await.unwrap();
+            self.erase_sector(sector).await?;
         }
 
         Ok(())
